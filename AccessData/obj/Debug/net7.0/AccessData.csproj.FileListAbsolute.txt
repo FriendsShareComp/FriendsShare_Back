@@ -1,0 +1,17 @@
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\AccessData.deps.json
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\AccessData.dll
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\AccessData.pdb
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\Domain.dll
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\Domain.pdb
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.csproj.AssemblyReference.cache
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.AssemblyInfoInputs.cache
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.AssemblyInfo.cs
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.csproj.CoreCompileInputs.cache
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.csproj.CopyComplete
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.dll
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\refint\AccessData.dll
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\AccessData.pdb
+E:\Proyectos\UsuarioService\AccessData\obj\Debug\net7.0\ref\AccessData.dll
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\Aplication.dll
+E:\Proyectos\UsuarioService\AccessData\bin\Debug\net7.0\Aplication.pdb

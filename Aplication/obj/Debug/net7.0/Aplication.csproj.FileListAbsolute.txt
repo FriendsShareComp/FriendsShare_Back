@@ -1,0 +1,15 @@
+E:\Proyectos\UsuarioService\Aplication\bin\Debug\net7.0\Aplication.deps.json
+E:\Proyectos\UsuarioService\Aplication\bin\Debug\net7.0\Aplication.dll
+E:\Proyectos\UsuarioService\Aplication\bin\Debug\net7.0\Aplication.pdb
+E:\Proyectos\UsuarioService\Aplication\bin\Debug\net7.0\Domain.dll
+E:\Proyectos\UsuarioService\Aplication\bin\Debug\net7.0\Domain.pdb
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.csproj.AssemblyReference.cache
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.GeneratedMSBuildEditorConfig.editorconfig
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.AssemblyInfoInputs.cache
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.AssemblyInfo.cs
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.csproj.CoreCompileInputs.cache
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.csproj.CopyComplete
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.dll
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\refint\Aplication.dll
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\Aplication.pdb
+E:\Proyectos\UsuarioService\Aplication\obj\Debug\net7.0\ref\Aplication.dll
