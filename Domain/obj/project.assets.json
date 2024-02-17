@@ -347,11 +347,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\UsuarioService\\Domain\\Domain.csproj",
+      "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "E:\\Proyectos\\UsuarioService\\Domain\\Domain.csproj",
+      "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\UsuarioService\\Domain\\obj\\",
+      "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Eugc3vvMBIrVkMR/UtbqSW/t0bVVPVHS9GTgDHXIUe/AyNMJ5UcQveDjLbSPHVVMKosWaDmEsRUhb7F4b1CTMg==",
+  "dgSpecHash": "kgy5livUK5SbxFQu3a6XAuLgDajxlyoJq8eTe4EzgZens4EIlWMmibhKxYU6VIOqTT8ZkA3zRIUcK1Z2tpnUFg==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos\\UsuarioService\\Domain\\Domain.csproj",
+  "projectFilePath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.1\\microsoft.aspnetcore.cryptography.internal.8.0.1.nupkg.sha512",

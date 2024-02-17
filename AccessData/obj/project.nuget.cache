@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x29MsEVK8uIqMEjvwN0uPOEIZ/d7nXWHdd/QCusuOwr7PF7gBZHuTsKnC1fQSGxAe9MdpWws+K2D30tB0pLmxA==",
+  "dgSpecHash": "RLtIcnK27vr/YI/QCk94Vd+Mv15ljR7GeljB44YJYNKHtH8CeF3nFRfVJdBHTDSP+VDY6+QWkV8/lNckmkmgzA==",
   "success": true,
-  "projectFilePath": "E:\\Proyectos\\UsuarioService\\AccessData\\AccessData.csproj",
+  "projectFilePath": "E:\\Proyectos\\git\\FriendsShare_Back\\AccessData\\AccessData.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",

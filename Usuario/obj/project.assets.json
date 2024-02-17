@@ -2267,11 +2267,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\UsuarioService\\Usuario\\Usuario.csproj",
+      "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\Usuario.csproj",
       "projectName": "Usuario",
-      "projectPath": "E:\\Proyectos\\UsuarioService\\Usuario\\Usuario.csproj",
+      "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\Usuario.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\UsuarioService\\Usuario\\obj\\",
+      "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2288,11 +2288,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\Proyectos\\UsuarioService\\AccessData\\AccessData.csproj": {
-              "projectPath": "E:\\Proyectos\\UsuarioService\\AccessData\\AccessData.csproj"
+            "E:\\Proyectos\\git\\FriendsShare_Back\\AccessData\\AccessData.csproj": {
+              "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\AccessData\\AccessData.csproj"
             },
-            "E:\\Proyectos\\UsuarioService\\Aplication\\Aplication.csproj": {
-              "projectPath": "E:\\Proyectos\\UsuarioService\\Aplication\\Aplication.csproj"
+            "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj": {
+              "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj"
             }
           }
         }

@@ -2,7 +2,6 @@
 using Aplication.Interfaces;
 using Aplication.Utils;
 using Domain.Dto;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Usuario.Controllers
@@ -13,7 +12,6 @@ namespace Usuario.Controllers
     {
 
         private readonly IUserService _userServices;
-
         public UserController(IUserService use)
         {
             _userServices = use;
@@ -31,6 +29,5 @@ namespace Usuario.Controllers
             }
             return new JsonResult(new { Message = response.content, Token = response.objects }) { StatusCode = response.StatusCode };
         }
-
     }
 }

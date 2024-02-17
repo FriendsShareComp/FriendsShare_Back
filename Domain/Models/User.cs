@@ -26,7 +26,7 @@ namespace Domain.Models
         public string Password { get; set; } = null!;
 
         [BsonElement("CreatedAt")]
-        public string CreatedAt { get; set; } = null!;
+        public DateTime? CreatedAt { get; set; } = null!;
 
         [BsonElement("description")]
         public string Description { get; set; } = null!;

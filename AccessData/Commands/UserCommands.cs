@@ -1,8 +1,8 @@
 ﻿using Aplication.Interfaces;
 using Aplication.Utils;
 using AutoMapper;
+using Domain.Dto;
 using Domain.Models;
-using Domain.Security;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -33,13 +33,6 @@ namespace AccessData.Services
             responseCreated.StatusCode = 200;
             try
             {
-                user.Password= Encrypt.encryption(user.Password);
-
-                
-                // Validar los datos del usuario antes de insertar
-
-                
-
                 // Insertar el usuario en la colección
                 await _userCollection.InsertOneAsync(user);
                 responseCreated.objects = user;
@@ -49,6 +42,24 @@ namespace AccessData.Services
             {
                 // Aquí puedes registrar la excepción o manejarla de otra manera
                 // En este ejemplo, simplemente relanzamos la excepción para que sea manejada en niveles superiores
+                var response = new Response(false, "Internal server error");
+                response.StatusCode = 500;
+                return response;
+                throw;
+            }
+            return responseCreated;
+        }
+        public Response SearchUserByCredentials(dtoLoginUser userDto)
+        {
+            var responseCreated = new Response(true, "Usuario existente");
+            responseCreated.StatusCode = 200;
+            try
+            {
+                User user= _userCollection.Find(x => (x.UserName==userDto.email || x.Email==userDto.email) && x.Password==userDto.password).First();
+                responseCreated.objects = user;
+            }
+            catch (Exception ex)
+            {
                 var response = new Response(false, "Internal server error");
                 response.StatusCode = 500;
                 return response;

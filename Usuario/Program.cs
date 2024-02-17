@@ -64,6 +64,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserCommands, UserCommands>();
+builder.Services.AddTransient<IAuthService, AuthServices>();
 
 //builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 

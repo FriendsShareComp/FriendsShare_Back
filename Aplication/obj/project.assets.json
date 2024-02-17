@@ -1027,11 +1027,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\UsuarioService\\Aplication\\Aplication.csproj",
+      "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj",
       "projectName": "Aplication",
-      "projectPath": "E:\\Proyectos\\UsuarioService\\Aplication\\Aplication.csproj",
+      "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj",
       "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\UsuarioService\\Aplication\\obj\\",
+      "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1048,8 +1048,8 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "E:\\Proyectos\\UsuarioService\\Domain\\Domain.csproj": {
-              "projectPath": "E:\\Proyectos\\UsuarioService\\Domain\\Domain.csproj"
+            "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj": {
+              "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj"
             }
           }
         }
