@@ -2262,19 +2262,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gianl\\.nuget\\packages\\": {}
+    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Usuario\\Usuario.csproj",
+      "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\Usuario.csproj",
       "projectName": "Usuario",
-      "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Usuario\\Usuario.csproj",
-      "packagesPath": "C:\\Users\\gianl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Usuario\\obj\\",
+      "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\Usuario.csproj",
+      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+      "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Usuario\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gianl\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2288,11 +2288,11 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
-            "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\AccessData\\AccessData.csproj": {
-              "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\AccessData\\AccessData.csproj"
+            "E:\\Proyectos\\git\\FriendsShare_Back\\AccessData\\AccessData.csproj": {
+              "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\AccessData\\AccessData.csproj"
             },
-            "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj": {
-              "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj"
+            "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj": {
+              "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj"
             }
           }
         }
@@ -2301,11 +2301,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -2356,7 +2351,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
