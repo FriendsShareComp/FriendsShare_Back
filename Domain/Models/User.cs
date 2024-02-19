@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Domain.Dto;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Domain.Models
@@ -7,7 +8,7 @@ namespace Domain.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string? _id { get; set; }
+        public string _id { get; set; } = null!;
         [BsonElement("username")]
         public string UserName { get; set; } = null!;
 
@@ -35,9 +36,8 @@ namespace Domain.Models
         public string UpdateAt { get; set; } = null!;
 
         [BsonElement("Active")]
-        public string Active { get; set; } = null!;
-
-        [BsonElement("FriendsCuantity")]
-        public int FriendsCuantity { get; set; }
+        public int? Active { get; set; }
+        [BsonElement("Friends")]
+        public List<UserDto>? Friends { get; set; }
     }
 }

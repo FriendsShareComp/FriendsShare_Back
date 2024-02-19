@@ -7,7 +7,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<UserDto, User>();
+        CreateMap<UserRegisterDto, User>();
         
     }
 }

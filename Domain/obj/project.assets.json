@@ -342,19 +342,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Usuario\\.nuget\\packages\\": {}
+    "C:\\Users\\gianl\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
+      "projectUniqueName": "C:\\Users\\gianl\\Source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj",
       "projectName": "Domain",
-      "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
-      "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-      "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\obj\\",
+      "projectPath": "C:\\Users\\gianl\\Source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj",
+      "packagesPath": "C:\\Users\\gianl\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\gianl\\Source\\Repos\\FriendsShare_Back\\Domain\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gianl\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -374,6 +374,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -409,7 +414,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

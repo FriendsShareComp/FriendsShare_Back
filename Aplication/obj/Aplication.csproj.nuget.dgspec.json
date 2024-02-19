@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj": {}
+    "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj": {}
   },
   "projects": {
-    "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj": {
+    "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj",
+        "projectUniqueName": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj",
         "projectName": "Aplication",
-        "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\Aplication.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Aplication\\obj\\",
+        "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\Aplication.csproj",
+        "packagesPath": "C:\\Users\\gianl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Aplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gianl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj": {
-                "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj"
+              "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj"
               }
             }
           }
@@ -38,6 +38,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -69,21 +74,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj": {
+    "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "E:\\Proyectos\\git\\FriendsShare_Back\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\gianl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gianl\\source\\Repos\\FriendsShare_Back\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gianl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -103,6 +108,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -138,7 +148,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

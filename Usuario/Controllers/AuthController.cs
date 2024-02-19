@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Usuario.Controllers
 {
     [ApiController]
+    [Route("/User")]
     public class AuthController : Controller
     {
         private readonly IAuthService _authService;

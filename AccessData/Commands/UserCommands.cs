@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.Dto;
 using Domain.Models;
 using Microsoft.Extensions.Options;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AccessData.Services
@@ -28,7 +29,7 @@ namespace AccessData.Services
 
         public async Task<Response> CreateUser(User user)
         {
-            
+
             var responseCreated = new Response(true, "creacion del usuario completada");
             responseCreated.StatusCode = 200;
             try
@@ -55,7 +56,7 @@ namespace AccessData.Services
             responseCreated.StatusCode = 200;
             try
             {
-                User user= _userCollection.Find(x => (x.UserName==userDto.email || x.Email==userDto.email) && x.Password==userDto.password).First();
+                User user = _userCollection.Find(x => (x.UserName == userDto.email || x.Email == userDto.email) && x.Password == userDto.password && x.Active==1).First();
                 responseCreated.objects = user;
             }
             catch (Exception ex)
@@ -66,6 +67,32 @@ namespace AccessData.Services
                 throw;
             }
             return responseCreated;
+        }
+        public bool UserExistByCredentials(string credential)
+        {
+            int count = (int) _userCollection.Find(x => x.UserName == credential || (x.Email == credential && x.Email!=null)).Count();
+
+            
+
+            return count>0;
+        }
+        public User GetUserById(string idUSer)
+        {
+            User user = _userCollection.Find(x => x._id == idUSer && x.Active == 1).First();
+            return user;
+        }
+
+        public User FindUserByFieldAsync(string fieldName, object value)
+        {
+            var filter = Builders<User>.Filter.Eq(fieldName, BsonValue.Create(value));
+            var result = _userCollection.Find(filter).First();
+            return result;
+        }
+
+        public List<UserDto> GetFriendsByUser(string idUSer)
+        {
+            List<UserDto> user = _userCollection.Find(x => x._id == idUSer && x.Active==1).Project(x =>  x.Friends ).First() ?? new List<UserDto>();
+            return user;
         }
     }
 }
