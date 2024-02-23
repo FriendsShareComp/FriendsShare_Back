@@ -29,10 +29,10 @@ namespace Aplication.Services
 
             response = _userCommands.SearchUserByCredentials(userDto);
 
-            if (!response.succes)
+            if (response.objects==null)
             {
                 response.succes = false;
-                response.content = "Los datos ingresados no pertenecen a ningun usuario, vualva a intentarlo";
+                response.content = "Los datos ingresados no pertenecen a ningun usuario activo, vualva a intentarlo";
                 response.StatusCode = 400;
                 return response;
             }

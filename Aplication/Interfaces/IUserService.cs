@@ -8,5 +8,6 @@ namespace Aplication.Interfaces
         Response UserRegister(UserRegisterDto user);
         public Response GetFriendsByUser(string idUser);
         public Response AddFriendsByUser(string idUserLogged, string idUserFriend);
+        public Response DeleteUser(string idUser);
     }
 }

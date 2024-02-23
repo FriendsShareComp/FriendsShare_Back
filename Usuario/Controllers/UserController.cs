@@ -67,5 +67,19 @@ namespace Usuario.Controllers
             }
             return new JsonResult(new { Data = response.objects }) { StatusCode = response.StatusCode };
         }
+
+        [HttpDelete("/Delete")]
+        [Authorize]
+        public async Task<IActionResult> Delete()//id del usuario que voy a seguir
+        {
+
+
+            string userId = User.Identity.Name; //id del usuario desde el token
+
+            Response response = _userServices.DeleteUser(userId);
+
+            
+            return new JsonResult(new { Data = response.content }) { StatusCode = response.StatusCode };
+        }
     }
 }

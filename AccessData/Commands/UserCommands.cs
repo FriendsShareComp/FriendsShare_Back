@@ -13,9 +13,7 @@ namespace AccessData.Services
     {
         private readonly IMongoCollection<User> _userCollection;
 
-        public UserCommands(
-            IOptions<UserStoreDatabaseSettings> userStoreDatabaseSettings,
-            IMapper mapper)
+        public UserCommands(IOptions<UserStoreDatabaseSettings> userStoreDatabaseSettings)
         {
             var mongoClient = new MongoClient(
                 userStoreDatabaseSettings.Value.ConnectionString);
@@ -39,10 +37,8 @@ namespace AccessData.Services
                 responseCreated.objects = user;
 
             }
-            catch (Exception ex)
+            catch
             {
-                // Aquí puedes registrar la excepción o manejarla de otra manera
-                // En este ejemplo, simplemente relanzamos la excepción para que sea manejada en niveles superiores
                 var response = new Response(false, "Internal server error");
                 response.StatusCode = 500;
                 return response;
@@ -59,7 +55,7 @@ namespace AccessData.Services
                 User user = _userCollection.Find(x => (x.UserName == userDto.email || x.Email == userDto.email) && x.Password == userDto.password && x.Active==1).First();
                 responseCreated.objects = user;
             }
-            catch (Exception ex)
+            catch
             {
                 var response = new Response(false, "Internal server error");
                 response.StatusCode = 500;
@@ -68,12 +64,10 @@ namespace AccessData.Services
             }
             return responseCreated;
         }
+
         public bool UserExistByCredentials(string credential)
         {
             int count = (int) _userCollection.Find(x => x.UserName == credential || (x.Email == credential && x.Email!=null)).Count();
-
-            
-
             return count>0;
         }
         public User GetUserById(string idUSer)
@@ -82,11 +76,58 @@ namespace AccessData.Services
             return user;
         }
 
-        public User FindUserByFieldAsync(string fieldName, object value)
+        public User FindUserByFieldAsync(string fieldName, object value, List<string> excludeFields)
         {
-            var filter = Builders<User>.Filter.Eq(fieldName, BsonValue.Create(value));
-            var result = _userCollection.Find(filter).First();
+            var filter = Builders<User>.Filter.And(
+                Builders<User>.Filter.Eq(fieldName, BsonValue.Create(value)),
+                Builders<User>.Filter.Eq(u => u.Active, 1)
+            );
+            var projectionBuilder = Builders<User>.Projection;
+            var fields = excludeFields.Select(field => projectionBuilder.Exclude(field));
+
+            User result =  _userCollection.Find(filter)
+                .Project<User>(projectionBuilder.Combine(fields))
+                .FirstOrDefault();
+
+
             return result;
+        }
+
+        public bool ExistUserByFieldAsync(string fieldName, object value)
+        {
+            if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
+            {
+                return false;
+            }
+            var filter = Builders<User>.Filter.And(
+                Builders<User>.Filter.Eq(fieldName, BsonValue.Create(value)),
+                Builders<User>.Filter.Eq(u => u.Active, 1)
+            );
+            bool result = _userCollection.Find(filter).Any();
+            return result;
+        }
+
+        public async Task<bool> UpdateUserForFieldsById(string id, User user, List<string> fieldsToUpdate)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u._id, id);
+            var updateBuilder = Builders<User>.Update.Set(u => u.Friends, user.Friends);
+
+            foreach (var fieldName in fieldsToUpdate)
+            {
+                if(user.GetType()!= null)
+                    updateBuilder = updateBuilder.Set(fieldName, user.GetType().GetProperty(fieldName).GetValue(user));
+
+            }
+            var result = await _userCollection.UpdateOneAsync(filter, updateBuilder);
+            return result.ModifiedCount > 0;
+        }
+
+        public async Task<bool> DeleteUser(string id)
+        {
+            var filter = Builders<User>.Filter.Eq(u => u._id, id);
+            var updateBuilder = Builders<User>.Update.Set(u => u.Active, 0);
+            var result = await _userCollection.UpdateOneAsync(filter, updateBuilder);
+            return result.ModifiedCount > 0;
         }
 
         public List<UserDto> GetFriendsByUser(string idUSer)

@@ -15,18 +15,19 @@ namespace Aplication.Services
         private readonly JwtAuthManager _jwtAuthManager;
         private readonly IMapper _mapper;
         private readonly DateTime _dateTime;
+        private List<string> _excludeFields;
         public UserService(IUserCommands com, JwtAuthManager manager, IMapper mapper) 
         {
             _userCommands = com;
             _jwtAuthManager = manager;
             _mapper = mapper;
             _dateTime = DateTime.Now;
+            _excludeFields = new List<string>() { "password"};
         }
 
         public Response UserRegister(UserRegisterDto userDto)
         {
             User user;
-            
             var response = new Response(true, "Se ha creado el usuario correctamente");
             response.StatusCode = 200;
 
@@ -39,19 +40,16 @@ namespace Aplication.Services
                 return response;
             }
 
-
-            //var existsUsername = _userCommands.UserExistByCredentials(userDto.UserName);
-            //var existsEmail = _userCommands.UserExistByCredentials(userDto.Email);
-            string existsUsername = _userCommands.FindUserByFieldAsync("username", userDto.UserName).UserName.ToString();
-            string existEmail = _userCommands.FindUserByFieldAsync("email", userDto.Email).Email.ToString();
-            if (existsUsername!="")
+            bool existsUsername = _userCommands.ExistUserByFieldAsync("username", userDto.UserName);
+            bool existEmail = _userCommands.ExistUserByFieldAsync("email", userDto.Email);
+            if (existsUsername)
             {
                 response.content = "ya existe un usuario con el username";
                 response.succes = false;
                 response.StatusCode = 400;
                 return response;
             }
-            if (existEmail != "")
+            if (existEmail)
             {
                 response.content = "ya existe un usuario con el email";
                 response.succes = false;
@@ -71,11 +69,26 @@ namespace Aplication.Services
             response.objects = token;
             
             return response;
+        }
+        public Response DeleteUser(string idUser)
+        {
+            var response = new Response(true, "Se ha eliminado el usuario correctamente");
+            response.StatusCode = 200;
 
+            bool delete=_userCommands.DeleteUser(idUser).Result;
+
+            if (!delete)
+            {
+                response.content = "error al eliminar el usuario"; 
+                response.StatusCode = 500;
+                response.succes=false;
+            }
+
+            return response;
         }
         public Response GetFriendsByUser(string idUser)
         {
-            var response = new Response(true, "Se ha creado el usuario correctamente");
+            var response = new Response(true, "Friends");
             response.StatusCode = 200;
 
             List<UserDto> friends=_userCommands.GetFriendsByUser(idUser);
@@ -86,10 +99,26 @@ namespace Aplication.Services
         }
         public Response AddFriendsByUser(string idUserLogged, string idUserFriend)
         {
-            User user=_userCommands.GetUserById(idUserLogged);
-            var response = new Response(true, "Se ha creado el usuario correctamente");
-
+            var response = new Response(true, "Lista de amigos actualizada!!");
             response.StatusCode = 200;
+
+            List<string> updateFields = new List<string> { "Friends" };
+            User user1=_userCommands.FindUserByFieldAsync("_id", idUserLogged, _excludeFields);
+            User user2 = _userCommands.FindUserByFieldAsync("_id", idUserFriend, _excludeFields);
+
+            
+
+            user1.Friends.Add(_mapper.Map<UserDto>(user2));
+            user2.Friends.Add(_mapper.Map<UserDto>(user1));
+
+
+
+            response.succes = _userCommands.UpdateUserForFieldsById(user1._id, user1,updateFields).Result;
+            response.succes = _userCommands.UpdateUserForFieldsById(user2._id, user2, updateFields).Result;
+
+            if (!response.succes) response.content = "error al actualizar la lista de amigos";
+
+
             return response;
         }
         private Response ValidateFieldsRegister(UserRegisterDto user)
