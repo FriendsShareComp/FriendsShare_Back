@@ -33,11 +33,16 @@ namespace Domain.Models
         public string Description { get; set; } = null!;
 
         [BsonElement("UpdateAt")]
-        public string UpdateAt { get; set; } = null!;
+        public DateTime? UpdateAt { get; set; } = null!;
 
         [BsonElement("Active")]
         public int? Active { get; set; }
         [BsonElement("Friends")]
-        public List<UserDto>? Friends { get; set; }
+        public List<UserDto> Friends { get; set; }
+
+        public User()
+        {
+            Friends = new List<UserDto>();
+        }
     }
 }
