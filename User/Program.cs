@@ -80,13 +80,6 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Configure the HTTP request pipeline.
 var app = builder.Build();
 
-
-app.Use((context, next) =>
-{
-    context.Request.PathBase = "/User";
-    return next();
-});
-
 app.UseSwagger();
 app.UseSwaggerUI();
 

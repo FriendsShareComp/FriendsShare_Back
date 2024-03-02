@@ -97,6 +97,18 @@ namespace Aplication.Services
             return response;
 
         }
+
+        public Response GetUserById(string idUser)
+        {
+            var response = new Response(true, "Friends");
+            response.StatusCode = 200;
+
+            User friends = _userCommands.FindUserByFieldAsync("_id",idUser,_excludeFields);
+
+            response.objects = friends;
+            return response;
+        }
+
         public Response AddFriendsByUser(string idUserLogged, string idUserFriend)
         {
             var response = new Response(true, "Lista de amigos actualizada!!");

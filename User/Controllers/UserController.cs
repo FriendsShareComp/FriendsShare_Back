@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace Usuario.Controllers
 {
     [ApiController]
-    //[Route("/User")]
+    [Route("/User")]
     public class UserController : ControllerBase
     {
 
@@ -35,6 +35,21 @@ namespace Usuario.Controllers
             return new JsonResult(new { Message = response.content, Token = response.objects }) { StatusCode = response.StatusCode };
         }
 
+        [HttpGet("/GetUserById/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            //_logger.LogInformation(userDto.ToString());
+            //string authenticatedUserId = User.Identity.Name; //id del usuario desde el token
+
+            Response response = _userServices.GetUserById(id);
+
+            if (!response.succes)
+            {
+                return new JsonResult(new { Error = response.content }) { StatusCode = response.StatusCode };
+            }
+            return new JsonResult(new { Data = response.objects }) { StatusCode = response.StatusCode };
+        }
         [HttpGet("/GetFriends/{id}")]
         [Authorize]
         public async Task<IActionResult> GetFriends(string id)

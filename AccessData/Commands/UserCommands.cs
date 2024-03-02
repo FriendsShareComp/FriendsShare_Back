@@ -135,5 +135,7 @@ namespace AccessData.Services
             List<UserDto> user = _userCollection.Find(x => x._id == idUSer && x.Active==1).Project(x =>  x.Friends ).First() ?? new List<UserDto>();
             return user;
         }
+
+        
     }
 }
