@@ -1,26 +1,46 @@
-using Domain.Models;
-using Aplication.Services;
-using Aplication.Interfaces;
 using AccessData.Services;
-using Swashbuckle.AspNetCore.Filters;
-using Microsoft.OpenApi.Models;
+using Aplication.Interfaces;
+using Aplication.Services;
+using Aplication.Utils;
+using Domain.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using Aplication.Utils;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Filters;
 using System.Text.Json.Serialization;
-
-
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-//builder.Logging.ClearProviders();
-//builder.Logging.AddConsole();
+// Agregar servicios al contenedor.
+builder.Services.AddControllers().AddJsonOptions(x =>
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
+var myApiKey = builder.Configuration["ApiKey"];
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(myApiKey)),
+        RequireExpirationTime = true,
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.FromDays(7),
+        LifetimeValidator = (notBefore, expires, token, validationParameters) =>
+        {
+            // Verificar si el token ha expirado
+            return expires > DateTime.UtcNow;
+        }
 
-builder.Services.AddControllers();
+    };
+});
 
+builder.Services.AddSingleton(new JwtAuthManager(myApiKey));
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -34,64 +54,27 @@ builder.Services.AddSwaggerGen(options =>
     options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
 
-var key = "83kZz7QOdv9Sj3SqT1gS0sjTPqmGDqo8XVXzNDLL";
-builder.Services.AddAuthentication(x =>
-{
-    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
-{
-    x.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(key)),
-        RequireExpirationTime = true,
-        ValidateIssuer = false,
-        ValidateAudience = false
-    };
-});
+// Configurar AutoMapper
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-builder.Services.AddSingleton(new JwtAuthManager(key));
-builder.Services.AddControllers().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-
-// Add services to the container.
-builder.Services.Configure<UserStoreDatabaseSettings>(
-builder.Configuration.GetSection(key: "UserStoreDatabase"));
+// Configurar base de datos y servicios
+builder.Services.Configure<UserStoreDatabaseSettings>(builder.Configuration.GetSection(key: "UserStoreDatabase"));
 builder.Services.AddSingleton<UserService>();
-
-builder.Services.AddControllers();
-
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserCommands, UserCommands>();
 builder.Services.AddTransient<IAuthService, AuthServices>();
 
-//builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+// Agregar puntos de acceso para la API
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
-
-
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
-
-// Configure the HTTP request pipeline.
 var app = builder.Build();
-
-
-app.Use((context, next) =>
-{
-    context.Request.PathBase = "/User";
-    return next();
-});
 
 app.UseSwagger();
 app.UseSwaggerUI();
 
-//app.UseHttpsRedirection();
-
+// Agregar autenticación y autorización al pipeline de solicitudes HTTP
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
