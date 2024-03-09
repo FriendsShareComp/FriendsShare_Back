@@ -9,7 +9,7 @@ using System.Security.Claims;
 namespace Usuario.Controllers
 {
     [ApiController]
-    [Route("/User")]
+    [Route("User")]
     public class UserController : ControllerBase
     {
 
@@ -22,7 +22,7 @@ namespace Usuario.Controllers
         }
 
 
-        [HttpPost("/Register")]
+        [HttpPost("Register")]
         public async Task<IActionResult> UserRegister([FromBody] UserRegisterDto userDto)
         {
             //_logger.LogInformation(userDto.ToString());
@@ -35,7 +35,7 @@ namespace Usuario.Controllers
             return new JsonResult(new { Message = response.content, Token = response.objects }) { StatusCode = response.StatusCode };
         }
 
-        [HttpGet("/GetUserById/{id}")]
+        [HttpGet("GetUserById/{id}")]
         [Authorize]
         public async Task<IActionResult> GetUserById(string id)
         {
@@ -50,7 +50,7 @@ namespace Usuario.Controllers
             }
             return new JsonResult(new { Data = response.objects }) { StatusCode = response.StatusCode };
         }
-        [HttpGet("/GetFriends/{id}")]
+        [HttpGet("GetFriends/{id}")]
         [Authorize]
         public async Task<IActionResult> GetFriends(string id)
         {
@@ -66,7 +66,7 @@ namespace Usuario.Controllers
             return new JsonResult(new { Data = response.objects }) { StatusCode = response.StatusCode };
         }
 
-        [HttpGet("/AddFriend/{id}")]
+        [HttpGet("AddFriend/{id}")]
         [Authorize]
         public async Task<IActionResult> AddFriends(string id)//id del usuario que voy a seguir
         {
@@ -74,16 +74,12 @@ namespace Usuario.Controllers
             
             string userId = User.Identity.Name; //id del usuario desde el token
 
-            Response response = _userServices.AddFriendsByUser(id, userId);
+            Response response = _userServices.AddFriendsByUser(userId, id);
 
-            if (!response.succes)
-            {
-                return new JsonResult(new { Error = response.content }) { StatusCode = response.StatusCode };
-            }
-            return new JsonResult(new { Data = response.objects }) { StatusCode = response.StatusCode };
+            return new JsonResult(new { Data = response.content }) { StatusCode = response.StatusCode };
         }
 
-        [HttpDelete("/Delete")]
+        [HttpDelete("Delete")]
         [Authorize]
         public async Task<IActionResult> Delete()//id del usuario que voy a seguir
         {
@@ -94,6 +90,19 @@ namespace Usuario.Controllers
             Response response = _userServices.DeleteUser(userId);
 
             
+            return new JsonResult(new { Data = response.content }) { StatusCode = response.StatusCode };
+        }
+        [HttpPut("UpdateUser")]
+        [Authorize]
+        public async Task<IActionResult> UpdateUser(UserUpdateDto user)//id del usuario que voy a seguir
+        {
+
+
+            string userId = User.Identity.Name; //id del usuario desde el token
+
+            Response response = _userServices.UpdateUser(userId, user);
+
+
             return new JsonResult(new { Data = response.content }) { StatusCode = response.StatusCode };
         }
     }

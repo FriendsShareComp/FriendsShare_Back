@@ -10,5 +10,6 @@ namespace Aplication.Interfaces
         public Response GetFriendsByUser(string idUser);
         public Response AddFriendsByUser(string idUserLogged, string idUserFriend);
         public Response DeleteUser(string idUser);
+        public Response UpdateUser(string idUser, UserUpdateDto user);
     }
 }

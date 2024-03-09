@@ -4,6 +4,7 @@ using AutoMapper;
 using Domain.Dto;
 using Domain.Models;
 using Domain.Security;
+using System.Runtime.Intrinsics.X86;
 using System.Text.RegularExpressions;
 
 
@@ -111,7 +112,7 @@ namespace Aplication.Services
 
         public Response AddFriendsByUser(string idUserLogged, string idUserFriend)
         {
-            var response = new Response(true, "Lista de amigos actualizada!!");
+            var response = new Response(true, "Lista de amigos actualizada");
             response.StatusCode = 200;
 
             List<string> updateFields = new List<string> { "Friends" };
@@ -119,6 +120,13 @@ namespace Aplication.Services
             User user2 = _userCommands.FindUserByFieldAsync("_id", idUserFriend, _excludeFields);
 
             
+            if(user2 == null) 
+            {
+                response.content = "el usuario a seguir no existe";
+                response.StatusCode=404;
+                response.succes=false; 
+                return response;
+            }
 
             user1.Friends.Add(_mapper.Map<UserDto>(user2));
             user2.Friends.Add(_mapper.Map<UserDto>(user1));
@@ -163,6 +171,26 @@ namespace Aplication.Services
                     return response;
                 }
             }
+            return response;
+        }
+        public Response UpdateUser(string idUser, UserUpdateDto user)
+        {
+            var response = new Response(true, "Usuario actualizado");
+            response.StatusCode = 200;
+            List<string> updateFields = new List<string> {  };
+            var properties = typeof(UserUpdateDto).GetProperties();
+
+            user.UpdateAt = DateTime.Now;
+            // Iterar sobre cada propiedad y agregar su nombre a la lista
+            foreach (var property in properties)
+            {
+                var value = property.GetValue(user);
+                if(value!=null) updateFields.Add(property.Name);
+            }
+
+            User userUpdate=_mapper.Map<User>(user);
+            if (updateFields.Count>1 && userUpdate!=null) response.succes = _userCommands.UpdateUserForFieldsById(idUser, userUpdate, updateFields).Result;
+
             return response;
         }
     }

@@ -78,16 +78,24 @@ namespace AccessData.Services
 
         public User FindUserByFieldAsync(string fieldName, object value, List<string> excludeFields)
         {
+            // Crear filtro para buscar un documento en la colección de usuarios
             var filter = Builders<User>.Filter.And(
+                // Condición para el campo dinámico especificado por fieldName que debe ser igual al valor especificado por value
                 Builders<User>.Filter.Eq(fieldName, BsonValue.Create(value)),
+                // Condición para el campo 'Active' que debe ser igual a 1
                 Builders<User>.Filter.Eq(u => u.Active, 1)
             );
+
+            // Crear un constructor de proyección para seleccionar campos específicos para excluir
             var projectionBuilder = Builders<User>.Projection;
+
+            // Excluir campos específicos de la proyección según la lista excludeFields
             var fields = excludeFields.Select(field => projectionBuilder.Exclude(field));
 
-            User result =  _userCollection.Find(filter)
-                .Project<User>(projectionBuilder.Combine(fields))
-                .FirstOrDefault();
+            // Ejecutar la consulta en la colección de usuarios, aplicando el filtro y la proyección
+            User result = _userCollection.Find(filter)
+                .Project<User>(projectionBuilder.Combine(fields)) // Aplicar la proyección al resultado de la consulta
+                .FirstOrDefault(); // Obtener el primer documento que cumple con el filtro y la proyección
 
 
             return result;
